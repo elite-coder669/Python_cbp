@@ -3,7 +3,7 @@ from data_preprocessing import load_data_from_files, stratified_train_test_split
 from pca_module import apply_pca, visualize_eigenfaces
 from classification_module import train_classifier, predict_faces
 from evaluation_module import evaluate_model, plot_confusion_matrix
-from error_analysis import analyze_errors, analyze_classwise_performance, plot_classwise_metrics
+from error_analysis import analyze_errors, analyze_performance, plot_performance_metrics
 from utilities import save_model
 import numpy as np
 
@@ -43,9 +43,9 @@ def execute_pipeline():
         plot_confusion_matrix(y_test, y_pred)
         analyze_errors(y_test, y_pred, X_test, h, w)
 
-        # Class-wise performance analysis
-        analyze_classwise_performance(y_test, y_pred)
-        plot_classwise_metrics(y_test, y_pred)
+        # Overall performance analysis (accuracy, precision, recall, F1 score)
+        analyze_performance(y_test, y_pred)
+        plot_performance_metrics(y_test, y_pred)
 
         print("Pipeline executed and model saved as 'trained_face_recognition_model.joblib'")
     else:
